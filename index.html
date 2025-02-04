@@ -195,7 +195,6 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-
                 >
                   <path
                     stroke-linecap="round"
@@ -219,7 +218,6 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-
                 >
                   <path
                     stroke-linecap="round"
@@ -243,7 +241,6 @@
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-
                 >
                   <path
                     stroke-linecap="round"
@@ -262,6 +259,19 @@
           </div>
 
           <!-- Right Form -->
+
+          <div
+            class="npf_wgts"
+            data-height="400px"
+            data-w="8abd738034a1b8d59848838e202275f6"
+          ></div>
+          <script type="text/javascript">
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://widgets.nopaperforms.com/emwgts.js";
+            document.body.appendChild(s);
+          </script>
           <!-- <div class="lg:ml-auto">
             <div
               class="p-8 w-full max-w-md backdrop-blur-md bg-white/10 shadow-2xl border border-white/20 rounded-3xl"
@@ -1342,7 +1352,8 @@
 
       // Add carousel functionality
       let currentSlide = 0;
-      const cardsPerSlide = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 4; // Show 4 cards on large screens
+      const cardsPerSlide =
+        window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 4; // Show 4 cards on large screens
       const totalSlides = teamMembers.length; // Show dots for all 5 testimonials
 
       let autoSlideInterval;
@@ -1361,7 +1372,9 @@
       function initCarousel() {
         // Clone the first set of cards and append them to the end for smooth infinite loop
         const container = document.getElementById("team-members");
-        const cards = teamMembers.map(member => createTeamMemberCard(member)).join('');
+        const cards = teamMembers
+          .map((member) => createTeamMemberCard(member))
+          .join("");
         // Add original cards plus cloned cards for smooth transition
         container.innerHTML = cards + cards;
 
@@ -1388,7 +1401,7 @@
       }
 
       function nextSlide() {
-        currentSlide = (currentSlide + 1);
+        currentSlide = currentSlide + 1;
         updateCarousel();
         resetAutoSlide();
       }
@@ -1397,7 +1410,7 @@
         if (currentSlide === 0) {
           currentSlide = totalSlides - 1;
         } else {
-          currentSlide = (currentSlide - 1);
+          currentSlide = currentSlide - 1;
         }
         updateCarousel();
         resetAutoSlide();
@@ -1415,28 +1428,36 @@
 
         // Calculate slide position
         const slideWidth = 100 / cardsPerSlide;
-        
+
         // Add smooth transition
-        container.style.transition = 'transform 0.5s ease-in-out';
-        container.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        container.style.transition = "transform 0.5s ease-in-out";
+        container.style.transform = `translateX(-${
+          currentSlide * slideWidth
+        }%)`;
 
         // When we reach the cloned slides, quickly reset to original slides without animation
         if (currentSlide >= totalSlides) {
           setTimeout(() => {
-            container.style.transition = 'none';
+            container.style.transition = "none";
             currentSlide = 0;
             container.style.transform = `translateX(0%)`;
             // Restore transition after reset
             setTimeout(() => {
-              container.style.transition = 'transform 0.5s ease-in-out';
+              container.style.transition = "transform 0.5s ease-in-out";
             }, 50);
           }, 500);
         }
 
         // Update dots
         dots.forEach((dot, index) => {
-          dot.classList.toggle("bg-red-500", index === currentSlide % totalSlides);
-          dot.classList.toggle("bg-gray-300", index !== currentSlide % totalSlides);
+          dot.classList.toggle(
+            "bg-red-500",
+            index === currentSlide % totalSlides
+          );
+          dot.classList.toggle(
+            "bg-gray-300",
+            index !== currentSlide % totalSlides
+          );
         });
       }
 
